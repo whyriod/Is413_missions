@@ -6,6 +6,7 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.png" />
     <link href="lib/boostrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/StyleSheet.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/styles/Style.css?version=<%= Common.GetVersion%>" />
 </head>
 <body>
     <h1>Caleb Siebach</h1>
@@ -14,7 +15,7 @@
         My first technical interview involved me looking at some c# code. I hope that in this class<br />
         I will be able to gain the skills to pass such tests in the future. I want to strengthen<br />
         my web development skills, my knowledge of object-oreinted programming as well as another strongly <br />
-        typed language. 
+        typed language. I am hoping to learn, and to learn alot :)
     </p>
     <br />
     
@@ -37,17 +38,22 @@
     <form>
         <label>Assignments</label>
         <input id="assignment" type="text"/><br />
+
         <label>Group Project</label>
         <input id="group_project" type="text"/><br />
+
         <label>Quizzes</label>
         <input id="quiz" type="text"/><br />
+
         <label>Exams</label>
         <input id="exam" type="text"/><br />
+
         <label>INTEX</label>
         <input id="intex" type="text"/><br />
+
         <input id="grade_button" type="button" value="Calculate Grades" />
     </form>
-    <p id="grade_output">Grade: </p>
+    <p id="grade_output">Grade: <br />Percentage: </p>
 
     <script src="lib/boostrap/js/bootstrap.min.js"></script>
     <script src="lib/jquery/jquery-3.6.0.min.js"></script>
