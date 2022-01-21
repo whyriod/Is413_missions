@@ -10,56 +10,45 @@ document.getElementById("grade_button").addEventListener("click", function () {
 })
 */
 
-$("#grade_button").click(function () {
+$("#Grade_button").click(function () {
+
+    // Testing stuff
+    //if (!$("form").isValid()){
+    //    return true;
+    //}
+
+
     //Get Input, cast to number, and give weights
-    let assignment = Number($("#assignment").val()) * 0.55;
-    let group_project = Number($("#group_project").val()) * 0.05;
-    let quiz = Number($("#quiz").val()) * 0.10;
-    let exam = Number($("#exam").val()) * 0.20;
-    let intex = Number($("#intex").val()) * 0.10;
+    let Assignment = Number($("#Assignment").val());
+    let Group_project = Number($("#Group_project").val());
+    let Quiz = Number($("#Quiz").val());
+    let Exam = Number($("#Exam").val());
+    let Intex = Number($("#Intex").val());
 
-    //Add them together
-    let total_grade = assignment + group_project + quiz + exam + intex;
-    let letter_grade;
+    data = {
+        Assignment: Assignment,
+        Group_project: Group_project,
+        Quiz: Quiz,
+        Exam: Exam,
+        Intex: Intex,
+    };
 
-    //Determine letter grade
-    if (total_grade >= 94) {
-        letter_grade = "A";
-    }
-    else if (total_grade >= 90) {
-        letter_grade = "A-";
-    }
-    else if (total_grade >= 87) {
-        letter_grade = "B+";
-    }
-    else if (total_grade >= 84) {
-        letter_grade = "B";
-    }
-    else if (total_grade >= 80) {
-        letter_grade = "B-";
-    }
-    else if (total_grade >= 77) {
-        letter_grade = "C+";
-    }
-    else if (total_grade >= 74) {
-        letter_grade = "C";
-    }
-    else if (total_grade >= 70) {
-        letter_grade = "C-";
-    }
-    else if (total_grade >= 67) {
-        letter_grade = "D+";
-    }
-    else if (total_grade >= 64) {
-        letter_grade = "D";
-    }
-    else if (total_grade >= 60) {
-        letter_grade = "D-";
-    }
-    else {
-        letter_grade = "E"
-    }
+    $.ajax({
+        url: '/Home/GradeForm',
+        type: 'POST',
+        data: data,
+        dataType: "script",
+        success: function (result) {
+            //Convert to readable json
+            result = JSON.parse(result);
+            alert("Grade: " + result.letter_grade + "\n" + "Percentage: " + result.total_grade + "%");
+            //Display to page: Dont do that.
+            //document.getElementById("grade_output").innerHTML = "Grade: " + result.letter_grade + "<br/>Percentage: " + result.total_grade + "%";
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
 
-    //Display Grade to p tag.
-    document.getElementById("grade_output").innerHTML = "Grade: " + letter_grade + "<br/>Percentage: " + total_grade + "%"
+    return true;
 })

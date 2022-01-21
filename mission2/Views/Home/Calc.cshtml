@@ -4,26 +4,27 @@
 @{
     ViewData["Title"] = "In Demand: Calculator";
 }
+@model missions.Models.Grades
 
 <h2>Grade Calculator:</h2>
-<form>
-    <label>Assignments</label>
-    <input id="assignment" type="text" /><br />
+<form method="post">
+    <label for="Assignment">Assignments</label>
+    <input asp-for="Assignment" id="Assignment" type="number" /><br />
 
-    <label>Group Project</label>
-    <input id="group_project" type="text" /><br />
+    <label for="Group_project">Group Project</label>
+    <input asp-for="Group_project" id="Group_project" type="number" /><br />
 
-    <label>Quizzes</label>
-    <input id="quiz" type="text" /><br />
+    <label for="Quiz">Quizzes</label>
+    <input asp-for="Quiz" id="Quiz" type="number" /><br />
 
-    <label>Exams</label>
-    <input id="exam" type="text" /><br />
+    <label for="Exam">Exams</label>
+    <input asp-for="Exam" id="Exam" type="number" /><br />
 
-    <label>INTEX</label>
-    <input id="intex" type="text" /><br />
+    <label for="Intex">INTEX</label>
+    <input asp-for="Intex" id="Intex" type="number" /><br />
 
-    <input id="grade_button" type="button" value="Calculate Grades" />
+    <input id="Grade_button" type="submit" value="Calculate Grades" />
+    <div asp-validation-summary="All"></div>
 </form>
-<p id="grade_output">Grade: <br />Percentage: </p>
-
+<!-- <p id="grade_output">Grade: <br />Percentage: </p> -->
 <script src="~/js/JavaScript.js"></script>
